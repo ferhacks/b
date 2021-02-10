@@ -7,6 +7,7 @@ RUN apt-get update \
  && apt-get upgrade -y
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Moscow
+RUN apt-get --reinstall install screen -y
 RUN apt-get install -y tzdata && \
     apt-get install -y \
     curl \
@@ -21,7 +22,7 @@ ENV SHELL=/bin/bash
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
-RUN apt-get --reinstall install screen -y
+
 
 COPY package*.json ./
 
