@@ -22,7 +22,7 @@ ENV SHELL=/bin/bash
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
-RUN mkdir ~/.screen /
+RUN mkdir ~/.screen \
 && chmod 700 ~/.screen
 
 RUN export SCREENDIR=$HOME/.screen

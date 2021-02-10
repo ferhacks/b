@@ -39,4 +39,6 @@ RUN pip3 install s3cmd
 
 COPY . .
 
+RUN chmod +x /botwsp/back/sync.sh
+
 CMD bash /botwsp/start.sh
