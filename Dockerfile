@@ -16,8 +16,6 @@ RUN apt-get install -y tzdata && \
    sudo \
     && rm -rf /var/lib/apt/lists/*
     
-RUN chmod 777 /run/screen
-
 RUN chsh -s /bin/bash
 ENV SHELL=/bin/bash
     
@@ -33,6 +31,8 @@ RUN pip3 install s3cmd
 # RUN npm ci --only=production
 
 # Bundle app source
+RUN chmod -R 777 /run/screen
+
 COPY . .
 
 CMD bash /botwsp/start.sh
