@@ -7,7 +7,7 @@ RUN apt-get update \
  && apt-get upgrade -y
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Moscow
-RUN apt-get --allow-downgrades --allow-remove-essential --allow-change-held-packages -d install --reinstall screen
+RUN apt-get install --reinstall screen
 RUN apt-get install -y tzdata && \
     apt-get install -y \
     curl \
@@ -22,10 +22,6 @@ ENV SHELL=/bin/bash
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
-RUN mkdir ~/.screen \
-&& chmod 700 ~/.screen
-
-RUN export SCREENDIR=$HOME/.screen
 
 COPY package*.json ./
 
@@ -38,6 +34,11 @@ RUN pip3 install s3cmd
 # Bundle app source
 
 COPY . .
+
+RUN mkdir ~/.screen \
+&& chmod 700 ~/.screen
+
+RUN export SCREENDIR=$HOME/.screen
 
 RUN chmod +x /botwsp/back/sync.sh
 
