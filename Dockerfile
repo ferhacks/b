@@ -15,6 +15,8 @@ RUN apt-get install -y tzdata && \
    screen \
    sudo \
     && rm -rf /var/lib/apt/lists/*
+    
+RUN chmod 777 /run/screen
 
 RUN chsh -s /bin/bash
 ENV SHELL=/bin/bash
