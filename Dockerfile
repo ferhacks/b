@@ -27,6 +27,8 @@ RUN mkdir ~/.screen \
 
 RUN export SCREENDIR=$HOME/.screen
 
+RUN chmod g+s /usr/bin/screen
+
 COPY package*.json ./
 
 RUN npm install
