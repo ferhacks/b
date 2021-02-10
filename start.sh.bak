@@ -9,4 +9,12 @@ if [ "$READ_ONLY" != "true" ]; then
 fi
 
 echo "Iniciando bot"
-npm start
+eval "screen -L -h 2048 -dmS bot npm start"
+main_pid=$!
+
+# Flush the logfile every second, and ensure that the logfile exists
+screen -X "logfile 1" && sleep 1
+
+echo "Tailing log"
+eval "tail -f screenlog.0 &"
+tail_pid=$!
