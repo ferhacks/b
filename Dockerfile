@@ -12,7 +12,6 @@ RUN apt-get install -y tzdata && \
     curl \
     python3 \
     python3-pip \
-   screen \
    sudo \
     && rm -rf /var/lib/apt/lists/*
     
@@ -22,6 +21,8 @@ ENV SHELL=/bin/bash
 # Install app dependencies
 # A wildcard is used to ensure both package.json AND package-lock.json are copied
 # where available (npm@5+)
+RUN apt-get --reinstall install screen -y
+
 COPY package*.json ./
 
 RUN npm install
@@ -31,7 +32,6 @@ RUN pip3 install s3cmd
 # RUN npm ci --only=production
 
 # Bundle app source
-RUN chmod -R 777 /run/screen
 
 COPY . .
 
