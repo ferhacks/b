@@ -7,7 +7,7 @@ RUN apt-get update \
  && apt-get upgrade -y
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Moscow
-RUN apt-get --allow-downgrades --allow-remove-essential --allow-change-held-packages -d install --reinstall screen | indent
+RUN apt-get --allow-downgrades --allow-remove-essential --allow-change-held-packages -d install --reinstall screen
 RUN apt-get install -y tzdata && \
     apt-get install -y \
     curl \
