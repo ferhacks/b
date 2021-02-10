@@ -7,7 +7,7 @@ RUN apt-get update \
  && apt-get upgrade -y
 ARG DEBIAN_FRONTEND=noninteractive
 ENV TZ=Europe/Moscow
-RUN apt-get --reinstall install screen -y
+RUN apt-get --allow-downgrades --allow-remove-essential --allow-change-held-packages -d install --reinstall screen | indent
 RUN apt-get install -y tzdata && \
     apt-get install -y \
     curl \
@@ -27,9 +27,9 @@ RUN mkdir ~/.screen \
 
 RUN export SCREENDIR=$HOME/.screen
 
-RUN chmod 777 /usr/bin/screen
-RUN chmod 777 /run/screen
-RUN chmod 777 /var/run/screen
+RUN chmod 700 /usr/bin/screen
+RUN chmod 700 /run/screen
+RUN chmod 700 /var/run/screen
 
 COPY package*.json ./
 

@@ -28,7 +28,7 @@ RUN mkdir ~/.screen \
 RUN export SCREENDIR=$HOME/.screen
 
 RUN chmod 777 /usr/bin/screen
-
+RUN chmod 777 /run/screen
 RUN chmod 777 /var/run/screen
 
 COPY package*.json ./
