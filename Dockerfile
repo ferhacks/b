@@ -15,7 +15,9 @@ RUN apt-get install -y tzdata && \
     curl \
     python3 \
     python3-pip \
-   sudo \
+   sudo
+   
+RUN sudo apt-get --reinstall install screen \
     && rm -rf /var/lib/apt/lists/*
     
 RUN chsh -s /bin/bash
